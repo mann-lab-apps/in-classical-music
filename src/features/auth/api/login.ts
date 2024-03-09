@@ -1,0 +1,13 @@
+import { supabase } from '@/libraries/supabase';
+
+type loginCredentialsDTO = {
+  email: string;
+  password: string;
+};
+
+export const loginWithEmailAndPassword = ({
+  email,
+  password,
+}: loginCredentialsDTO) => {
+  return supabase.auth.signInWithPassword({ email, password });
+};
