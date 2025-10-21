@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 type ColumnProps = {
-  justifyContent?: 'start' | 'center' | 'end';
+  justifyContent?: "start" | "center" | "end";
 };
 
 export const Wrapper = styled.header`
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 1;

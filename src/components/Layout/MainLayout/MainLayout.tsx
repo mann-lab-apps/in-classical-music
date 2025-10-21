@@ -1,12 +1,11 @@
-import React from 'react';
-import { HeaderButtons, Inner, Wrapper } from './MainLayout.style';
-import { Header } from '../Header';
-import { Button, Link, Logo, NotificationMenu } from '@/components/Elements';
-import { BottomNavigation } from '../BottomNavigation';
-import { Footer } from '../Footer';
-import { RegionSelectMenu } from './RegionSelectMenu';
+import React from "react";
+import { HeaderButtons, Inner, Wrapper } from "./MainLayout.style";
+import { Header } from "../Header";
+import { Button, Link, Logo, NotificationMenu } from "@/components/Elements";
+import { Footer } from "../Footer";
+import { RegionSelectMenu } from "./RegionSelectMenu";
 
-import { RiSearchLine } from 'react-icons/ri';
+import { RiSearchLine } from "react-icons/ri";
 
 type MainLayoutProps = {
   auth: any;
@@ -42,7 +41,6 @@ export const MainLayout = ({ auth, children }: MainLayoutProps) => {
       />
       <Inner>{children}</Inner>
       <Footer />
-      <BottomNavigation auth={auth} />
     </Wrapper>
   );
 };

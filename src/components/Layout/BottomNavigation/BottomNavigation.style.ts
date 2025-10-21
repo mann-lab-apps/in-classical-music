@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.nav`
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  // position: absolute;
+  // bottom: 0;
+  // left: 0;
+  justify-self: end;
 
   width: 100%;
   height: 60px;

@@ -1,9 +1,14 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.main`
-  min-height: 100vh;
+  max-width: 800px;
+  height: 100vh;
+  box-sizing: border-box;
 
-  padding: 50px 0 75px;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
 
   background-color: ${(props) => props.theme.colors.schemes.light.surface};
 `;
@@ -15,7 +20,8 @@ export const HeaderButtons = styled.div`
 `;
 
 export const Inner = styled.section`
-  height: 82vh;
+  height: 100%;
   box-sizing: border-box;
   padding: 15px;
+  overflow-y: scroll;
 `;

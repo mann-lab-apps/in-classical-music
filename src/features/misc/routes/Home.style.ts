@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FloatingButtonWrapper = styled.div`
   position: fixed;
-  bottom: 10%;
+  z-index: 20;
+  bottom: 15%;
   right: 10%;
 `;

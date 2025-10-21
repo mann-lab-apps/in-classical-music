@@ -1,14 +1,14 @@
-import { navigation } from '@/configurations';
-import { Column, Wrapper } from './BottomNavigation.style';
-import { Button } from '@/components/Elements';
-import { Link, useLocation } from 'react-router-dom';
-import { Tooltip } from '@/components/Elements/Tooltip';
+import { navigation } from "@/configurations";
+import { Column, Wrapper } from "./BottomNavigation.style";
+import { Button } from "@/components/Elements";
+import { Link, useLocation } from "react-router-dom";
+import { Tooltip } from "@/components/Elements/Tooltip";
+import { storage } from "@/utils/storage";
 
-type BottomNavigationProps = {
-  auth: any;
-};
+type BottomNavigationProps = {};
 
-export const BottomNavigation = ({ auth }: BottomNavigationProps) => {
+export const BottomNavigation = () => {
+  const auth = storage.getValue("accessToken");
   const { pathname } = useLocation();
 
   return (
@@ -20,7 +20,7 @@ export const BottomNavigation = ({ auth }: BottomNavigationProps) => {
               <Tooltip
                 text="로그인 후 이용 가능합니다"
                 horizontalPosition={
-                  link.name === '마이페이지' ? 'right' : 'center'
+                  link.name === "마이페이지" ? "right" : "center"
                 }
               >
                 <Button
