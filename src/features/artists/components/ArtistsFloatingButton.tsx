@@ -1,7 +1,7 @@
-import { Button, SelectDialog, Tooltip } from '@/components/Elements';
-import { PiMusicNotesPlusFill } from 'react-icons/pi';
-import { Wrapper } from './ArtistsFloatingButton.style';
-import { useNavigate } from 'react-router-dom';
+import { Button, SelectDialog, Tooltip } from "@/components/Elements";
+import { PiMusicNotesPlusFill } from "react-icons/pi";
+import { Wrapper } from "./ArtistsFloatingButton.style";
+import { useNavigate } from "react-router-dom";
 
 type ArtistsFloatingButtonProps = {
   auth: any;
@@ -10,7 +10,7 @@ type ArtistsFloatingButtonProps = {
 export const ArtistsFloatingButton = ({ auth }: ArtistsFloatingButtonProps) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/artists/write');
+    navigate("/artists/write");
   };
   if (!auth) {
     return (
