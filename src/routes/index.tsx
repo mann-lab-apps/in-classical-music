@@ -1,15 +1,15 @@
-import { Home, PrivacyPolicy, Region, TermsOfUse } from '@/features/misc';
-import { Navigate, Outlet, useRoutes } from 'react-router-dom';
-import { publicRoutes } from './public';
+import { Home, PrivacyPolicy, Region, TermsOfUse } from "@/features/misc";
+import { Navigate, Outlet, useRoutes } from "react-router-dom";
+import { publicRoutes } from "./public";
 // import { protectedRoutes } from './protected';
-import { Suspense, useEffect, useState } from 'react';
-import { supabase } from '@/libraries/supabase';
-import { ConcertRoutes } from '@/features/concerts';
-import { ArtistRoutes } from '@/features/artists';
-import { MainLayout } from '@/components/Layout';
-import { UserRoutes } from '@/features/users';
-import { Search } from '@/features/search';
-import { useProtectedRoutes } from './protected';
+import { Suspense, useEffect, useState } from "react";
+import { supabase } from "@/libraries/supabase";
+import { ConcertRoutes } from "@/features/concerts";
+import { ArtistRoutes } from "@/features/artists";
+import { MainLayout } from "@/components/Layout";
+import { UserRoutes } from "@/features/users";
+import { Search } from "@/features/search";
+import { useProtectedRoutes } from "./protected";
 
 type AppProps = {
   auth: any;
@@ -37,25 +37,25 @@ export const AppRoutes = () => {
 
   const commonRoutes = [
     {
-      path: '/',
+      path: "/",
       element: <App auth={auth} />,
       children: [
-        { path: '/', element: <Home auth={auth} /> },
-        { path: '/artists', element: <ArtistRoutes auth={auth} /> },
-        { path: '/users', element: <UserRoutes /> },
-        { path: '*', element: <Navigate to="/" /> },
+        { path: "/", element: <Home auth={auth} /> },
+        { path: "/artists", element: <ArtistRoutes auth={auth} /> },
+        { path: "/users", element: <UserRoutes /> },
+        { path: "*", element: <Navigate to="/" /> },
       ],
     },
-    { path: '/search', element: <Search /> },
+    { path: "/search", element: <Search /> },
     {
-      path: '/concerts/*',
+      path: "/concerts/*",
       element: <ConcertRoutes />,
     },
-    { path: '/artists/*', element: <ArtistRoutes auth={auth} /> },
-    { path: '/users/*', element: <UserRoutes /> },
-    { path: '/terms-of-use', element: <TermsOfUse /> },
-    { path: '/privacy-policy', element: <PrivacyPolicy /> },
-    { path: '/region', element: <Region /> },
+    { path: "/artists/*", element: <ArtistRoutes auth={auth} /> },
+    { path: "/users/*", element: <UserRoutes /> },
+    { path: "/terms-of-use", element: <TermsOfUse /> },
+    { path: "/privacy-policy", element: <PrivacyPolicy /> },
+    { path: "/region", element: <Region /> },
   ];
 
   const routes = auth ? protectedRoutes : publicRoutes;

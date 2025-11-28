@@ -81,6 +81,7 @@ export const initializeFCM = async () => {
       }
       const token = await requestPermissionAndGetToken(registration);
       onForegroundMessage(() => {});
+      return token;
     } catch (err) {
       console.error("Service Worker 등록 실패:", err);
     }

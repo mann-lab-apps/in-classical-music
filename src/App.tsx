@@ -9,13 +9,21 @@ import { AppProvider } from "./providers/App";
 import { AppRoutes } from "./routes";
 
 function App() {
+  const [token, setToken] = useState<string | null | undefined>("token");
   useEffect(() => {
-    initializeFCM();
+    (async () => {
+      const fcmToken = await initializeFCM();
+      console.log("fcmToken", fcmToken);
+      setToken(fcmToken);
+    })();
   }, []);
   return (
-    <AppProvider>
-      <AppRoutes />
-    </AppProvider>
+    <>
+      <>{token}</>
+      <AppProvider>
+        <AppRoutes />
+      </AppProvider>
+    </>
   );
 }
 
