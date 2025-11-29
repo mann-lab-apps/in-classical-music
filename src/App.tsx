@@ -10,16 +10,22 @@ import { AppRoutes } from "./routes";
 
 function App() {
   const [token, setToken] = useState<string | null | undefined>("token");
+  const handleAllowNotificationClick = async () => {
+    const fcmToken = await initializeFCM();
+    console.log("fcmToken", fcmToken);
+    setToken(fcmToken);
+  };
   useEffect(() => {
     (async () => {
-      const fcmToken = await initializeFCM();
-      console.log("fcmToken", fcmToken);
-      setToken(fcmToken);
+      // const fcmToken = await initializeFCM();
+      // console.log("fcmToken", fcmToken);
+      // setToken(fcmToken);
     })();
   }, []);
   return (
     <>
       <>{token}</>
+      <button onClick={handleAllowNotificationClick}>allow notification</button>
       <AppProvider>
         <AppRoutes />
       </AppProvider>
