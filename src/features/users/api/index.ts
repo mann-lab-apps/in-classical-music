@@ -1,1 +1,2 @@
-export * from './getMyInformation';
+export * from "./gerUserInfo";
+export * from "./updateUserAttribute";

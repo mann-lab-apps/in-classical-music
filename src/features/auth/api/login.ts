@@ -1,4 +1,5 @@
-import { supabase } from '@/libraries/supabase';
+import { axios } from "@/libraries/axios";
+import { supabase } from "@/libraries/supabase";
 
 type loginCredentialsDTO = {
   email: string;
@@ -9,5 +10,5 @@ export const loginWithEmailAndPassword = ({
   email,
   password,
 }: loginCredentialsDTO) => {
-  return supabase.auth.signInWithPassword({ email, password });
+  return axios.post("/api/auth/login", { username: email, password });
 };

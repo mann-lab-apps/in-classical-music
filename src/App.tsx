@@ -7,25 +7,14 @@ import {
 } from "./libraries/firebase";
 import { AppProvider } from "./providers/App";
 import { AppRoutes } from "./routes";
+import axios from "axios";
 
 function App() {
-  const [token, setToken] = useState<string | null | undefined>("token");
-  const handleAllowNotificationClick = async () => {
-    const fcmToken = await initializeFCM();
-    console.log("fcmToken", fcmToken);
-    setToken(fcmToken);
-  };
-  useEffect(() => {
-    (async () => {
-      // const fcmToken = await initializeFCM();
-      // console.log("fcmToken", fcmToken);
-      // setToken(fcmToken);
-    })();
-  }, []);
   return (
     <>
-      <>{token}</>
+      {/* <>{token}</>
       <button onClick={handleAllowNotificationClick}>allow notification</button>
+      <button onClick={sendMessage}>Send Message</button> */}
       <AppProvider>
         <AppRoutes />
       </AppProvider>
