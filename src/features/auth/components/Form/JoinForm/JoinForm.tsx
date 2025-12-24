@@ -1,10 +1,10 @@
-import { Form, InputField } from '@/components/Form';
-import { FormWrapper } from './JoinForm.style';
-import { Button } from '@/components/Elements';
-import { useState } from 'react';
-import { FaEye } from 'react-icons/fa';
-import { join } from '@/features/auth/api';
-import { FieldValues, useForm } from 'react-hook-form';
+import { Form, InputField } from "@/components/Form";
+import { FormWrapper } from "./JoinForm.style";
+import { Button } from "@/components/Elements";
+import { useState } from "react";
+import { FaEye } from "react-icons/fa";
+import { join } from "@/features/auth/api";
+import { FieldValues, useForm } from "react-hook-form";
 
 export const JoinForm = () => {
   const [isShowingPasswordAsText, setIsShowingPasswordAsText] = useState(false);
@@ -12,16 +12,16 @@ export const JoinForm = () => {
     useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const { setError } = useForm({ mode: 'onBlur' });
+  const { setError } = useForm({ mode: "onBlur" });
 
   const handleSubmit = (values: FieldValues) => {
-    const { username, email, password, passwordConfirm } = values;
+    const { name, email, password, passwordConfirm } = values;
     if (password !== passwordConfirm) {
-      console.log('fail!');
+      console.log("fail!");
       return setError(
-        'passwordConfirm',
+        "passwordConfirm",
         {
-          message: '비밀번호와 비밀번호 확인이 일치하지 않습니다',
+          message: "비밀번호와 비밀번호 확인이 일치하지 않습니다",
         },
         { shouldFocus: true }
       );
@@ -29,13 +29,13 @@ export const JoinForm = () => {
 
     (async () => {
       try {
-        const { data, error } = await join({ email, password });
-        console.log(data, error);
+        const response = await join({ name, email, password });
+        console.log(response);
       } catch (error) {
         console.error(error);
       }
     })();
-    console.log('Submit!');
+    console.log("Submit!");
   };
 
   return (
@@ -44,23 +44,23 @@ export const JoinForm = () => {
         <FormWrapper>
           <InputField
             label="이름"
-            registration={register('username')}
-            error={formState.errors['username']}
+            registration={register("name")}
+            error={formState.errors["name"]}
             type="text"
             placeholder="이름(실명)을 입력해주세요"
           />
           <InputField
             label="이메일"
-            registration={register('email')}
-            error={formState.errors['eamil']}
+            registration={register("email")}
+            error={formState.errors["eamil"]}
             type="email"
             placeholder="example@inclassicalmusic.com"
           />
           <InputField
             label="비밀번호"
-            registration={register('password')}
-            error={formState.errors['password']}
-            type={isShowingPasswordAsText ? 'text' : 'password'}
+            registration={register("password")}
+            error={formState.errors["password"]}
+            type={isShowingPasswordAsText ? "text" : "password"}
             placeholder="영문+숫자+특수문자를 조합하여 9자리 이상 입력해주세요"
             button={
               <Button
@@ -75,9 +75,9 @@ export const JoinForm = () => {
           />
           <InputField
             label="비밀번호 확인"
-            registration={register('passwordConfirm')}
-            error={formState.errors['passwordConfirm']}
-            type={isShowingPasswordConfirmAsText ? 'text' : 'password'}
+            registration={register("passwordConfirm")}
+            error={formState.errors["passwordConfirm"]}
+            type={isShowingPasswordConfirmAsText ? "text" : "password"}
             placeholder="영문+숫자+특수문자를 조합하여 9자리 이상 입력해주세요"
             button={
               <Button
@@ -95,7 +95,7 @@ export const JoinForm = () => {
           <Button
             type="submit"
             isDisabled={isDisabled}
-            variant={isDisabled ? 'secondary' : 'primaryContainer'}
+            variant={isDisabled ? "secondary" : "primaryContainer"}
             fontSize="medium"
             padding="10px"
           >
