@@ -3,10 +3,9 @@ import { Form } from "@/components/Form";
 import { InputField } from "@/components/Form/InputField";
 import { FormWrapper } from "./LoginForm.style";
 import { FieldValues } from "react-hook-form";
-import { loginWithEmailAndPassword } from "@/features/auth/api";
+import { loginWithEmailAndPasswordAndfcmToken } from "@/features/auth/api";
 import { storage } from "@/utils/storage";
 import { initializeFCM } from "@/libraries/firebase";
-import { gerUserInfo, updateUserAttribute } from "@/features/users/api";
 
 type LoginFormProps = {
   onSuccess: () => void;
@@ -15,24 +14,15 @@ type LoginFormProps = {
 export const LoginForm = ({ onSuccess }: LoginFormProps) => {
   const handleSubmit = async (values: FieldValues) => {
     const { email, password } = values;
+    const fcmToken = await initializeFCM();
+    if (!fcmToken) return;
     try {
-      const loginResponse = await loginWithEmailAndPassword({
+      const loginResponse = await loginWithEmailAndPasswordAndfcmToken({
         email,
         password,
+        fcmToken,
       });
       storage.setValue("token", loginResponse.data.token);
-
-      const getUserInfoResponse = await gerUserInfo();
-      const userId = getUserInfoResponse.data.id.id;
-      storage.setValue("userId", userId);
-
-      const fcmToken = await initializeFCM();
-      updateUserAttribute({
-        userId,
-        body: {
-          fcmToken,
-        },
-      });
     } catch (error) {
       console.error(error);
     }
